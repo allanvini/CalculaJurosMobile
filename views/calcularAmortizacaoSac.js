@@ -8,7 +8,7 @@ import {
 } from 'react-native-paper';
 import { calculaAmortizacaoSAC } from '../calcs/amortizacao';
 
-export function CalcularAmortizacaoSac({navigation}){
+export function CalcularAmortizacaoSac(){
     const [values, setValues] = useState({ saldoDevedor: 0, totalParcelas: 0, taxa: 0 })
     const [resultado, setResultado] = useState([])
     const [pagination, setPagination] = useState({
@@ -36,7 +36,9 @@ export function CalcularAmortizacaoSac({navigation}){
     return (
         <ScrollView>
             <View style={styles.container}>
-                <Text variant="bodyMedium">Esta sessão serve para você calcular a amortização na modalidade SAC, onde o valor da parcela é decrescente</Text>
+                <Text variant="bodyMedium">
+                    Esta sessão serve para você calcular a amortização na modalidade SAC, onde o valor da parcela é decrescente
+                </Text>
                 <TextInput
                     style={styles.input}
                     placeholder='0.00'

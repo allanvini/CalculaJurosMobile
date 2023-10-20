@@ -1,4 +1,4 @@
-export function DescobreParametro(capital, tempo, taxa, montante) {
+export function descobreParametro(capital, tempo, taxa, montante) {
     if (!capital) {
         return {
             capital: (Number(montante) / ((1 + Number(taxa) / 100) ** Number(tempo))).toFixed(2),
