@@ -1,20 +1,38 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, SafeAreaView } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { 
+  Home,
+  CalcularInvestimento,
+  CalcularAplicacao,
+  CalcularAmortizacaoPrice,
+  CalcularAmortizacaoSac,
+  DescobrirParametro
+} from './views';
 
 export default function App() {
+  const Stack = createNativeStackNavigator();
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.AndroidSafeArea}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name='Home' component={Home} />
+          <Stack.Screen name='Calcula Investimento' component={CalcularInvestimento} />
+          <Stack.Screen name='Calcula Aplicação' component={CalcularAplicacao} />
+          <Stack.Screen name='Amortização PRICE' component={CalcularAmortizacaoPrice} />
+          <Stack.Screen name='Amortização SAC' component={CalcularAmortizacaoSac} />
+          <Stack.Screen name='Descobrir Parametro' component={DescobrirParametro} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaView>  
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  AndroidSafeArea: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    paddingTop: Platform.OS === 'android' ? 35 : 0
+  }
 });
